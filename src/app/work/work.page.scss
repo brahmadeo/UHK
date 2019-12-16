@@ -1,0 +1,56 @@
+.form002 input[type=text], .form002 ion-textarea {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+.form002 input#num{
+    width: 100%;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.form002 input[type=submit] {
+  background-color:  #04b0ee;
+    color: white;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+.form002 input[type=submit]:hover {
+  background-color: #2b5f87;
+}
+
+.form002 label{font-weight:700;}
+.cen1 {
+  margin-top: 10px;
+    text-align: center;
+}
+
+ion-title{ background-color: #2b5f87; color:#fff; }
+
+.ion-color-primary {
+  --ion-color-base: #2B5F87 !important;
+  --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
+  --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+  --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
+  --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
+  --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
+}
+.progressbar{
+  left: 50%;
+  top: 50%;
+  position: absolute;
+}
+

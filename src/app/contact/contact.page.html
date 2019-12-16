@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Contact</ion-title>
+    <ion-button class="btn_next" color="primary" slot="end" ion-button (click)="go()">
+       next
+     </ion-button>
+     
+     <ion-buttons>
+       <ion-back-button defaultHref="/notice"></ion-back-button>
+     </ion-buttons>
+  </ion-toolbar>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</ion-header>
+
+<ion-content>
+<section  class="client1" style="background-image: url(assets/images/hand_shake.jpg);width: 100%;background-size: cover;height: 40%;">
+</section>
+<section class="contact_sec">
+<div class="container">
+		<h2>Contact Us</h2>
+
+<div class="form001">
+	<form>
+    <label for="fname">Your Name(required)</label>
+    <input type="text" [(ngModel)]="firstname" id="fname" name="firstname" placeholder="">
+
+    <label for="lname">Your Email(required)</label>
+    <input type="text" [(ngModel)]="lastname" id="lname" name="lastname" placeholder="">
+
+     <label for="subject">Subject</label>
+    <textarea id="subject" [(ngModel)]="subject" name="subject" placeholder="" style="height:100px"></textarea>
+
+    <label for="subject">Your Massage</label>
+    <textarea id="subject" [(ngModel)]="Massage" name="Massage" placeholder="." style="height:150px"></textarea>
+
+    <input type="submit"  value="Submit">
+  </form>
+</div>
+</div>
+</section>
+</ion-content>
+

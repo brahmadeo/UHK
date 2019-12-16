@@ -1,0 +1,28 @@
+<ion-app>
+	<ion-menu class="menu_item" side="start" menuId="first">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  </ion-header>
+  <ion-content >
+    
+    <ion-list color="primary" class="main_content">
+      <ion-item button (click)= "goHome()"><i class="fa fa-home icon" padding right:10px></i>Home</ion-item>
+      <ion-item button (click)=" goAbout()"><i class="fa fa-address-book" padding right:10px></i>ABOUT US</ion-item>
+      <ion-item button (click)= "goServices()"><i class="fa fa-cogs" aria-hidden="true" padding right:10px></i>SERVICES</ion-item>
+      <ion-item button (click)= "goNotice()" ><i class="fa fa-exclamation-triangle" aria-hidden="true"padding right:10px></i>NOTICE</ion-item>
+      <ion-item button (click)= "goClientele()"><i class="fa fa-users" aria-hidden="true" padding right:10px></i>CLIENTELE</ion-item>
+      <ion-item button (click)= "goContact()"><i class="fa fa-phone" aria-hidden="true" padding right:10px></i>CONTACT US</ion-item>
+      <!-- <ion-item button (click)= "goAttendance()"><i class="fa fa-phone" aria-hidden="true" padding right:10px></i>Take Atendance</ion-item> -->
+      <ion-item button (click)= "goSalesLogin()"><i class="fa fa-sign-in" aria-hidden="true" padding right:10px></i>SALES PERSON LOGIN</ion-item>
+    </ion-list>
+
+  </ion-content>
+  
+</ion-menu>
+  <ion-router-outlet id="content1" main></ion-router-outlet>
+</ion-app>

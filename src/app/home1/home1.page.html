@@ -1,0 +1,96 @@
+<ion-header>
+   <ion-toolbar color="primary">
+      <ion-title>home</ion-title>
+      <!-- <ion-button class="btn_next" slot="end" ion-button (click)="go()">
+         next
+      </ion-button> -->
+      <ion-buttons slot="start">
+         <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+   </ion-toolbar>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+   <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</ion-header>
+<ion-content>
+
+  <!-- Swiper -->
+  <div class="swiper-container">
+   <div class="swiper-wrapper">
+     <div class="swiper-slide">
+         <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav
+         (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+         <ion-slide *ngFor="let s of sliderOne.slidesItems">
+            <img src="../../assets/images1/{{s.id}}.jpg">
+         </ion-slide>
+         </ion-slides>
+        <!-- <div class="swiper_img">
+           <img src="../../assets/homeSlideImages/1.jpg">
+        </div> -->
+     </div>
+   </div>
+   <!-- Add Arrows -->
+   <div class="swiper-button-next" (click)="slideNext(sliderOne,slideWithNav)"></div>
+   <div class="swiper-button-prev"  (click)="slidePrev(sliderOne,slideWithNav)"></div>
+ </div>
+
+   <section class="home1_txt">
+      <div class="container">
+         <h4>Why us</h4>
+         <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+         <div class="bttn01"><a href="#">READ MORE</a></div>
+      </div>
+   </section>
+   <section class="home1_bx">
+      <div class="container">
+         <h3>what we work</h3>
+         <div class="row">
+            <div class="col-md-6 col-6 aa0">
+               <div class="box1 a1">
+                  <img src="assets/images/security guard.png">
+                  <h6>Security Guard</h6>
+                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+               </div>
+            </div>
+            <div class="col-md-6 col-6 aa1">
+               <div class="box1 a2">
+                  <img src="assets/images/security guard.png">
+                  <h6>Security Guard</h6>
+                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+               </div>
+            </div>
+            <div class="col-md-6 col-6 aa3">
+               <div class="box2 a3">
+                  <img src="assets/images/security guard.png">
+                  <h6>Security Guard</h6>
+                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+               </div>
+            </div>
+            <div iv class="col-md-6 col-6 aa4">
+               <div class="box2 a4">
+                  <img src="assets/images/security guard.png">
+                  <h6>Security Guard</h6>
+                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</ion-content>
+
+
+<!-- Initialize Swiper -->
+<script>
+   var swiper = new Swiper('.swiper-container', {
+     navigation: {
+       nextEl: '.swiper-button-next',
+       prevEl: '.swiper-button-prev',
+     },
+   });
+ </script>

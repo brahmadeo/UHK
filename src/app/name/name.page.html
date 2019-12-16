@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title></ion-title>
+
+     <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+     
+  </ion-toolbar>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</ion-header>
+
+<ion-content>
+  <section class="name_page">
+    <div class="container">
+       <form class="form002"> 
+          <div class="form-check-inline">
+            <label class="customradio"><span class="radiotextsty">YES</span>
+              <input type="radio" [(ngModel)]="radio" value="Yes" (change)="clickYes($event)" name="radio">
+              <span class="checkmark"></span>
+            </label>        
+            <label class="customradio" ><span class="radiotextsty">NO</span>
+              <input type="radio" [(ngModel)]="radio" value="No" name="radio" (click)="clickNo($event)">
+              <span class="checkmark"></span>
+            </label>
+   
+           </div>
+               <h5>leave weekly off</h5> 
+                
+               <h3>Name:<span>Uttam Kumar</span></h3>
+   
+               <div class="bttn01" id="btn-attend"><a (click)="attendFunc(firstnumber)">ATTENDENCE</a></div> 
+
+               <ion-spinner class="progressbar" *ngIf="isEnabled" color="primary"></ion-spinner>
+   
+               <div class="all_btn">
+                 <ul>
+                   <li><a class="status" value="Yes" (click)="selectYes()">YES</a></li>
+                   <li><a class="status1" value="No" (click)="selectNo()">NO</a></li>
+                   <li><a class="status2" value="Leave" (click)="selectLeave()">LEAVE</a></li>
+                   <li><a class="status3" value="weakly off" (click)="selectWeakOff()">WEAKLY OFF</a></li>
+                 </ul>
+               </div>
+             
+               <ion-textarea class="text-area" [(ngModel)]="comment_input" #firstnumber id="subject" name="subject" placeholder="Write a Comment " style="height:100px"></ion-textarea> 
+
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.2218619199552!2d88.43326931495955!3d22.570803985183726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027592644c551d%3A0x765632bef6a6b57e!2sXigmaPro%20Software%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1568111612399!5m2!1sen!2sin" width="100%" height="130px" frameborder="0" style="border:0;" allowfullscreen=""></iframe> 
+
+       </form>
+    </div>
+   </section>
+
+   <footer>
+    <section class="foot">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-6">
+            <p>Xigmapro pvt Ltd</p>
+          </div>
+           <div class="col-md-6 col-6">
+             <div class="social1">
+               <ul>
+                 <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+                 <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                 <li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
+                 <li><a href="#"><i class="fab fa-pinterest-square"></i></a></li>
+               </ul>
+             </div>
+           </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+</ion-content>

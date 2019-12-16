@@ -1,0 +1,80 @@
+<ion-header>
+	<ion-toolbar color="primary">
+	   <ion-title>Notice</ion-title>
+	   <ion-button color="primary" slot="end" ion-button (click)="go()">
+		  next
+	   </ion-button>
+	   <ion-buttons>
+		  <ion-back-button defaultHref="/clientele"></ion-back-button>
+	   </ion-buttons>
+	</ion-toolbar>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ </ion-header>
+ <ion-content>
+	<section  class="notice1" style="background-image: url(assets/images/hand_shake.jpg);width: 100%;background-size: cover;height: 25%;"></section>
+	<section class="our_Notice">
+	   <div class="container">
+		  <h2>Notice</h2>
+		  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+		  <div class="form000">
+			 <form [formGroup]="myform" (ngSubmit)="formSubmit()">
+				<label for="fname">Your Name(required)</label>
+				<input type="text" id="fname" formControlName="name" placeholder="">
+				<ng-container *ngFor='let validation of validation_messages.name'>
+					<div *ngIf="myform.get('name').hasError(validation.type) && (myform.get('name').dirty || myform.get('name').touched)">
+						{{validation.message}}
+					</div>
+				</ng-container>
+				<label for="lname">Your Email(required)</label>
+				<input type="text" id="lname" formControlName="email" placeholder="">
+				<ng-container *ngFor='let validation of validation_messages.email'>
+					<div *ngIf="myform.get('email').hasError(validation.type) && (myform.get('email').dirty || myform.get('email').touched)">
+						{{validation.message}}
+					</div>
+
+				</ng-container>
+				<label for="lname">Your Phone(required)</label>
+				<input type="number" id="num" formControlName="phone" placeholder="">
+				<ng-container *ngFor='let validation of validation_messages.phone'>
+					<div *ngIf="myform.get('phone').hasError(validation.type) && (myform.get('phone').dirty || myform.get('phone').touched)">
+						{{validation.message}}
+					</div>
+
+				</ng-container>
+				<label for="lname">Your Address</label>
+				<input type="text" id="Add" name="address" placeholder="">
+			
+				<label for="lname">Your Qualifications(required)</label>
+				<input type="text" id="qua" formControlName="qualification" placeholder="">
+				<ng-container *ngFor='let validation of validation_messages.qualification'>
+					<div *ngIf="myform.get('qualification').hasError(validation.type) && (myform.get('qualification').dirty || myform.get('qualification').touched)">
+						{{validation.qualification}}
+					</div>
+
+				</ng-container>
+				<label for="lname">Your Skills(required)</label>
+				<input type="text" id="qua" formControlName="skill" placeholder="">
+				<ng-container *ngFor='let validation of validation_messages.skill'>
+					<div *ngIf="myform.get('skill').hasError(validation.type) && (myform.get('skill').dirty || myform.get('skill').touched)">
+						{{validation.message}}
+					</div>
+					
+				</ng-container>
+				<label for="upload-photo">Upload Your CV(required)</label>
+				<input type="file" formControlName="photo" id="upload-photo" />
+				<ng-container *ngFor='let validation of validation_messages.photo'>
+					<div *ngIf="myform.get('photo').hasError(validation.type) && (myform.get('photo').dirty || myform.get('photo').touched)">
+						{{validation.message}}
+					</div>
+
+				</ng-container>
+				<input type="submit" block [disabled]="!myform.valid" value="Submit">
+			 </form>
+		  </div>
+	   </div>
+	</section>
+ </ion-content>

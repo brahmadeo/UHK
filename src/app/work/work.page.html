@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title></ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+     
+  </ion-toolbar>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</ion-header>
+
+<ion-content>
+<section class="work1">
+
+    <div class="container">
+        <div class="form002">	
+        <form action="/action_page.php">
+
+          <div class=" main_layout">
+
+              <div>
+
+                  <label for="fname">Name:</label>
+                  <input type="text" [(ngModel)]="nameText" disabled id="fname"  name="firstname" placeholder="data">
+              
+                  <label for="lname">Adress:</label>
+                  <input type="text" [ngModel]="address" id="add" disabled name="add" placeholder=" ">
+              
+                  <label for="lname">Email:</label>
+                  <input type="text" [(ngModel)]="email" id="email" disabled name="email" placeholder=" ">
+                 
+                  <ion-spinner class="progressbar" *ngIf="showProgressbar" color="primary"></ion-spinner>
+                
+                  <label for="lname">Phone:</label>
+                  <input  id="num" [(ngModel)]="phone" name="num" disabled placeholder=" " type="number">
+              
+                  <label for="lname">Followup Date:</label>
+                  <input type="text" [(ngModel)]="date" id="txt" disabled name="text" placeholder=" ">
+                  
+                  <label for="subject">Comment</label>
+                  <ion-textarea [(ngModel)]="text_area" id="subject" name="subject" placeholder="Write a comment..." style="height:150px"></ion-textarea>
+                  <div>
+                    <ion-row>
+                      <ion-col>
+                        <div *ngIf="!in_image_available">
+                            <ion-button fill="solid" id="firstImageButton"  color="light" (click)="selectImage('inPicture')"> <ion-icon slot="start" name="camera"></ion-icon>In Image</ion-button>
+                        </div>
+                          
+                          <label id="firstImage"></label>
+
+                          <div *ngIf="selected_in_image">
+                            <img src="{{imageLocation}}"/>
+                          </div>
+
+                      </ion-col>
+                      <ion-col>
+                        <div *ngIf="!out_image_available">
+                            <ion-button fill="solid" [disabled]="!in_image_available" color="light" (click)="selectImage('outPicture')">
+                                <ion-icon slot="start" name="camera"></ion-icon>
+                                Out Image</ion-button>
+                        </div>
+                          
+                              <label id="secondImage"></label>
+                              <div *ngIf="selected_out_image">
+                                <img src="{{imageLocation}}"/>
+                              </div>
+                              
+                      </ion-col>
+              
+                    </ion-row>
+                      
+                    <!-- <label>In Image</label>
+                    <ion-input type="file" accept="image/*" (change)="inImage($event)" ></ion-input> -->
+                  </div>
+           
+                  <div class="cen1"><input type="submit" value="Submit" (click)="ApiCallForUpdateSchedule('azx')"></div>
+    
+              </div>
+
+          </div>
+
+        </form>
+       </div>
+     </div>
+	
+</section>
+</ion-content>

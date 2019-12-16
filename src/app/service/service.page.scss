@@ -1,0 +1,84 @@
+.ser_box {
+    text-align: center;
+}
+.ser_box {
+    border: 1px solid #ccc;
+    background-color: #00000094;
+}
+.ser_box h4 {
+    color: #fff;
+    font-size: 17px;
+    padding-top: 7px;
+}
+.servive1 {
+    padding: 25px 0px;
+}
+.ser_box img {
+    padding-top: 5px;
+}
+.gap2 {
+    margin-top:7px;
+}
+.lt {
+    padding-right: 4px;
+}
+.rt {
+    padding-left:4px;
+}
+
+ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.ion-color-primary {
+    --ion-color-base: #2B5F87 !important;
+    --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
+    --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
+    --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
+}
+
+.listing {
+    margin: 0 auto;
+}
+.listing ul li {
+    display: inline-block;
+    padding: 10px 36px 0px 36px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #00000094;
+    margin: 10px 10px;
+}
+.listing ul li a {
+   
+    padding: 0px 10px 0px 10px;
+}
+.listing ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left:17px;
+}
+
+.listing h4{
+    font-size:14px;
+    color:#fff;
+}
+.error_msg{
+    width: auto;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    
+    background-color: #fff;
+}
+.progressbar{
+    left: 50%;
+    top: 50%;
+    position: absolute;
+  }

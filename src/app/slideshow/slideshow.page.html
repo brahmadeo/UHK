@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>slideshow</ion-title>
+     
+
+  </ion-toolbar>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+
+</ion-header>
+
+<ion-content class="section">
+
+
+    <div class="main_layout">
+
+      <!-- <div>
+          <img src="../../assets/images/splash.jpg">
+      </div> -->
+
+        <ion-slides class="ion_slides" pager="true" [options]="slideOptsOne" #slideWithNav
+          (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+          <ion-slide *ngFor="let s of sliderOne.slidesItems">
+            <div class="main_layout1">
+
+              <!-- For image and text-->
+              <div class="img_layout">
+                  <img src="../../assets/images1/{{s.id}}.jpg">
+              </div>
+
+               <!-- For text title-->
+
+              <div class="text_layout">
+
+                <div class="text1">
+                  <h5>{{s.title1}}</h5>
+                </div>
+
+                <div class="text2">
+                    <h6>{{s.title2}}</h6>
+                </div>
+         
+              </div>
+
+              <ion-spinner class="progressbar" *ngIf="isShowingSpinner" color="primary"></ion-spinner>
+              
+            </div>
+            
+          </ion-slide>
+        </ion-slides>
+
+        <ion-row >
+            <ion-col text-center>
+              <input type="button" id="btnSUbmit" value="Get Started" (click)="go()" class="go_btn">
+            </ion-col>
+          </ion-row>
+      
+    </div>
+
+  <br/><br/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
+</ion-content>

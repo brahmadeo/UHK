@@ -1,0 +1,55 @@
+.service_cli ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.box1 p{
+text-align: center;
+font-size: 10px;
+font-weight: 700;
+color: #929292;
+padding-top: 10px;
+}
+
+.service_cli ul li{
+    display: inline-block;
+    width: 84px;
+}
+section.service_cli h2 {
+    text-align: center;
+    padding-bottom:30px;
+    font-weight: 700;
+    color:#2b5f87;
+    font-size:25px;
+}
+.service_cli {
+    padding: 55px 0px;
+}
+.box1 {
+   padding-bottom:20px;
+   text-align: center;
+}
+.box1 img{
+width: 70%;
+border: 2px solid #04b0ee;
+border-radius: 50%;
+padding: 4px 4px;
+}
+
+ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.ion-color-primary {
+    --ion-color-base: #2B5F87 !important;
+    --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
+    --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
+    --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
+}

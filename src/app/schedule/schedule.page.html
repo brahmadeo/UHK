@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>schedule</ion-title>
+   
+     <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+     </ion-buttons>
+     
+  </ion-toolbar>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</ion-header>
+
+<ion-content>
+  <section class="work1">
+	<div class="container">
+     <div class="form002">	
+     <form action="/action_page.php">
+
+     	<div class="form-check-inline">
+
+          <label class="customradio"><span class="radiotextsty">PREVIOUS</span>
+            <input type="radio" [(ngModel)]="radio" checked="checked" value="previous" name="radio" (change)="prevCheck($event)">
+            <span class="checkmark"></span>
+          </label>        
+          <label class="customradio"><span class="radiotextsty">TODAY</span>
+            <input type="radio" [(ngModel)]="radio" name="radio" value="today" (change)="todayCheck($event)">
+            <span class="checkmark"></span>
+          </label>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          <label class="customradio"><span class="radiotextsty">UPCOMING</span>
+            <input type="radio" [(ngModel)]="radio" checked="checked" name="radio" value="upcoming" (change)="tomorrowCheck($event)">
+            <span class="checkmark"></span>
+          </label>      
+          
+          <ion-spinner class="progressbar" *ngIf="showSpinner" color="primary"></ion-spinner> 
+
+      </div>
+
+     <br>
+    <br>
+
+    <div *ngIf="result?.length == 0 && !showSpinner" class="error_msg">No Data found</div>
+
+    <ion-list *ngFor="let item of result" (click)="goUpdateSchedule(item.id)">
+
+      <ion-card class="ion-card  jjjjj">
+
+          <table class="table-rw">
+            <tr>
+              <td>Date :</td>
+              <td>{{item.date}}</td>
+            </tr>
+            <tr>
+              <td>Client Name :</td>
+              <td>{{item.name}}</td>
+            </tr>
+            <tr>
+              <td>Address :</td>
+              <td>{{item.address}}</td>
+            </tr>
+            <tr>
+              <td>Phone :</td>
+              <td>{{item.mobile}}</td>
+            </tr>
+            <tr>
+              <td>Comment :</td>
+              <td>{{item.comment}}</td>
+            </tr>
+            <tr>
+              <td>Status :</td>
+              <td>{{item.status}}</td>
+            </tr>
+              
+          </table>
+
+      </ion-card>
+
+    </ion-list>
+
+ 
+  </form>
+    </div>
+	</div>
+</section>
+</ion-content>
