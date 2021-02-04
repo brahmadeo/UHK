@@ -53,3 +53,8 @@ ion-title {
     --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
     --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
 }
+.spinner{
+    left: 45%;
+    top: 50%;
+    position: absolute;
+}

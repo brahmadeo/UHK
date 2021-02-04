@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Uid } from '@ionic-native/uid/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { ApiService } from '../services/api.service';
+import { Network } from '@ionic-native/network/ngx';
 
 //import {  RequestOptions } from 'selenium-webdriver/http';
 
@@ -46,7 +47,7 @@ UUID = null;
 		{type: 'maxlength', message: 'Username cannot be more than 25 characters long.'}
 	],
 	'email': [
-		{ type: 'required', message: 'Email is required.' }, { type: 'pattern', message: 'Enter valid email Idddd' }
+		{ type: 'required', message: 'Email is required.' }, { type: 'pattern', message: 'Enter valid email Id' }
 	],
 	'phone': [
 		{ type: 'required', message: 'Enter phone no.' }, { type: 'minlength', message: 'Phone must be at least 10 digit.' },
@@ -61,7 +62,19 @@ ngOnInit() {
   
   }
 
- constructor(private http: HttpClient, private router: Router, private alertCtrl: AlertController, private toastController: ToastController, formBuilder: FormBuilder, private uniqueDeviceId: UniqueDeviceID, private apiService: ApiService ) { 
+ constructor(private http: HttpClient, private router: Router, private alertCtrl: AlertController, private toastController: ToastController, formBuilder: FormBuilder, private uniqueDeviceId: UniqueDeviceID, private apiService: ApiService, private network: Network ) { 
+
+  this.network.onConnect().subscribe(() => {
+    console.log("connected");
+   
+
+    // watch network for a disconnect
+    this.network.onDisconnect().subscribe(() => {
+      console.log('network was disconnected :-(');
+     
+    });
+    
+  });
 	
  	this.myform = formBuilder.group({
 		name: new FormControl('' , [Validators.required, Validators.minLength(5), Validators.maxLength(25)]),
@@ -77,9 +90,11 @@ ngOnInit() {
 
 
  logForm(){
-	 
-	 this.sendPostRequest();
-	
+	 if(this.apiService.getNetworkStatus){
+    this.sendPostRequest();
+   }else{
+     this.presentToast("Please check your internet connection!");
+   }
  } 
 
  /* To show alertDialog */
@@ -105,7 +120,7 @@ ngOnInit() {
   sendPostRequest() {
   this.showLoader = true
    // var headers = new Headers();
-   alert(this.myform.value.name+" "+ this.myform.value.email+" "+this.myform.value.phone)
+   //alert(this.myform.value.name+" "+ this.myform.value.email+" "+this.myform.value.phone)
    console.log(this.myform.value.name+" "+ this.myform.value.email+" "+this.myform.value.phone);
 
     let postData = {
@@ -118,11 +133,19 @@ ngOnInit() {
     this.apiService.ApiCall('POST',this.url, postData).subscribe(data =>{
       let response = JSON.parse(JSON.stringify(data));
         if(response.Ack === 1){
-          this.router.navigate(['/home1']);
+          this.showLoader = false;
+          let navigationExtra : NavigationExtras = {
+            state : {
+              cmsId: 1
+            }
+          }
+          this.router.navigate(['/home1'], navigationExtra);
         }else if(response.Ack === 0){
+          this.showLoader = false;
           this.presentToast(data['message']);
         }
        }, error => {
+         this.showLoader = false;
         this.presentToast(error);
         console.log(error);
     });

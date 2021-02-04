@@ -1,15 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>service_inner</ion-title>
-    <ion-button color="primary" slot="end" ion-button (click)="go()">
-       next
-     </ion-button>
-
+    
        <ion-buttons>
        <ion-back-button defaultHref="/service"></ion-back-button>
-     </ion-buttons>
+     	</ion-buttons>
      
-
   </ion-toolbar>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -27,22 +23,23 @@
 		<h2>Our Service</h2>
 
 		<div class="service-box">
-			<h3>Computer AMC Service includes</h3>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+			<ion-spinner class="progressbar" *ngIf="showSpinner" color="primary"></ion-spinner> 
+			<!-- <h3>Computer AMC Service includes</h3> -->
+			<h3>{{jsonObject?.name}}</h3>
+			
 
 			<ul class="manage">
+				<li><img src="assets/images/arrow.png"><p id="desc"></p></li>
+				<!-- <li><img src="assets/images/arrow.png">Printer Maintainance</li>
+				<li><img src="assets/images/arrow.png">Monitor Maintainance</li>
 				<li><img src="assets/images/arrow.png">Add/Remove Hardware Computer</li>
-				<li><img src="assets/images/arrow.png">Printer Maintaince</li>
-				<li><img src="assets/images/arrow.png">Monitor Maintaince</li>
-				<li><img src="assets/images/arrow.png">Add/Remove Hardware Computer</li>
-				<li><img src="assets/images/arrow.png">Printer Maintaince</li>
-				<li><img src="assets/images/arrow.png">Monitor Maintaince</li>
-				<li><img src="assets/images/arrow.png">Service and Router Maintaince</li>
+				<li><img src="assets/images/arrow.png">Printer Maintainance</li>
+				<li><img src="assets/images/arrow.png">Monitor Maintainance</li>
+				<li><img src="assets/images/arrow.png">Service and Router Maintainance</li> -->
 				
 			</ul>
 
-
-			<h3>AMC Service Teams & Conditions</h3>
+			<!-- <h3>AMC Service Teams & Conditions</h3>
 
 			<ul class="manage">
 				<li><div class="bb"><img src="assets/images/arrow.png"></div><div class="aa">Add/Remove Hardware Computer</div></li>
@@ -50,7 +47,6 @@
 				<li><div class="bb"><img src="assets/images/arrow.png"></div><div class="aa">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div></li>
 				<li><div class="bb"><img src="assets/images/arrow.png"></div><div class="aa">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div></li>
 				<li><div class="bb"><img src="assets/images/arrow.png"></div><div class="aa">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div></li>
-				
 				
 			</ul>
                
@@ -61,9 +57,7 @@
 				<li>Monitor Maintaince</li>
 				<li>Add/Remove Hardware Computer</li>
 				
-				
 			</ul>
-
 
 			<h3>Statutory Compilances</h3>
 
@@ -78,8 +72,7 @@
 				<li>PAN:AABCU5355.</li>
 				<li>PAN:AABCU5355.</li>
 				
-				
-			</ul>
+			</ul> -->
 
 		</div>
 

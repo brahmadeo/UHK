@@ -1,9 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>clientele</ion-title>
-    <ion-button class="btn_next" color="primary" slot="end" ion-button (click)="go()">
-       next
-     </ion-button>
+   
      <ion-buttons slot="start">
 		<ion-menu-button autoHide="false"></ion-menu-button>
 	 </ion-buttons>
@@ -26,8 +24,14 @@
 <section class="service_cli">
 	<div class="container-fluid">
 		<h2>Our Clientele</h2>
-
+		<ion-spinner *ngIf="showSpinner" class="spinner" color="primary"></ion-spinner>
 		 <div class="box1">
+		<ul *ngIf="result?.length > 0">
+			<li *ngFor="let item of result" (click)="goCms(item.id)"> <img src="assets/images/logo1.png"><p>{{item.name}}</p></li>
+		</ul>
+	</div>
+
+	<!-- <div class="box1">
 		<ul>
 			<li><a href="#"> <img src="assets/images/logo1.png"><p>MEERA FORMS <BR> PVT. LTD</p> </a></li>
 			<li><a href="#"> <img src="assets/images/logo2.png"><p>MEERA FORMS <BR> PVT. LTD</p> </a></li>
@@ -43,16 +47,7 @@
 			<li><a href="#"> <img src="assets/images/logo3.png"><p>MEERA FORMS <BR> PVT. LTD</p> </a></li>
 			
 		</ul>
-	</div>
-
-	<div class="box1">
-		<ul>
-			<li><a href="#"> <img src="assets/images/logo1.png"><p>MEERA FORMS <BR> PVT. LTD</p> </a></li>
-			<li><a href="#"> <img src="assets/images/logo2.png"><p>MEERA FORMS <BR> PVT. LTD</p> </a></li>
-			<li><a href="#"> <img src="assets/images/logo3.png"><p>MEERA FORMS <BR> PVT. LTD</p> </a></li>
-			
-		</ul>
-	</div>
+	</div> -->
 
 	</div>
 </section>

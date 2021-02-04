@@ -5,6 +5,20 @@
      <ion-buttons slot="start">
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-buttons>
+
+      <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 300px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 300px;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
      
   </ion-toolbar>
 
@@ -14,6 +28,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </ion-header>
 
 <ion-content>
@@ -26,35 +41,49 @@
               <span class="checkmark"></span>
             </label>        
             <label class="customradio" ><span class="radiotextsty">NO</span>
-              <input type="radio" [(ngModel)]="radio" value="No" name="radio" (click)="clickNo($event)">
+              <input type="radio" [disabled]="isAttended" [(ngModel)]="radio" value="No" name="radio" (click)="clickNo($event)">
               <span class="checkmark"></span>
             </label>
    
            </div>
-               <h5>leave weekly off</h5> 
+               <!-- <h5>leave weekly off</h5>  -->
                 
-               <h3>Name:<span>Uttam Kumar</span></h3>
+               <h3>Name:<span>{{username}}</span></h3>
    
-               <div class="bttn01" id="btn-attend"><a (click)="attendFunc(firstnumber)">ATTENDENCE</a></div> 
+               <div class="bttn01" *ngIf="!clickedNo" id="btn-attend"><a (click)="attendFunc('yes')">ATTENDENCE</a></div> 
+               <p *ngIf="!clickedNo">please click for attendance</p>
 
                <ion-spinner class="progressbar" *ngIf="isEnabled" color="primary"></ion-spinner>
    
-               <div class="all_btn">
+               <div class="all_btn" *ngIf="clickedNo">
                  <ul>
-                   <li><a class="status" value="Yes" (click)="selectYes()">YES</a></li>
-                   <li><a class="status1" value="No" (click)="selectNo()">NO</a></li>
+                   <!-- <li><a class="status" value="Yes" (click)="selectYes()">YES</a></li> -->
+                   <!-- <li><a class="status1" value="No" (click)="selectNo()">NO</a></li> -->
                    <li><a class="status2" value="Leave" (click)="selectLeave()">LEAVE</a></li>
                    <li><a class="status3" value="weakly off" (click)="selectWeakOff()">WEAKLY OFF</a></li>
+                   <li><a class="status1" value="other" (click)="selectOther()">Other</a></li>
                  </ul>
                </div>
              
-               <ion-textarea class="text-area" [(ngModel)]="comment_input" #firstnumber id="subject" name="subject" placeholder="Write a Comment " style="height:100px"></ion-textarea> 
+               <ion-textarea class="text_area" [class.hide]="!clickedOther" [(ngModel)]="comment_input" #firstnumber id="subject" name="subject" placeholder="Write a Comment " style="height:100px"></ion-textarea> 
+               
+               <div class="bttn01" *ngIf="clickedNo" id="btn-attend"><a (click)="attendFunc('no')">Submit</a></div> 
+               
+               <div id="map"></div>
 
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.2218619199552!2d88.43326931495955!3d22.570803985183726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027592644c551d%3A0x765632bef6a6b57e!2sXigmaPro%20Software%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1568111612399!5m2!1sen!2sin" width="100%" height="130px" frameborder="0" style="border:0;" allowfullscreen=""></iframe> 
-
+               <!-- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGhPJcQLe56u0MXK6Unv3BCK6UYD4pB4Q&callback=initMap"> -->
+               
+               <script async defer
+               src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7FwBWIRMcFwFuTWSVvYTJI0dv_NunLKc&callback=initMap">
+               </script>
+               <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.2218619199552!2d88.43326931495955!3d22.570803985183726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027592644c551d%3A0x765632bef6a6b57e!2sXigmaPro%20Software%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1568111612399!5m2!1sen!2sin" width="100%" height="130px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>  -->
+               
        </form>
     </div>
+    
    </section>
+
+   
 
    <footer>
     <section class="foot">
@@ -77,4 +106,5 @@
       </div>
     </section>
   </footer>
+     
 </ion-content>

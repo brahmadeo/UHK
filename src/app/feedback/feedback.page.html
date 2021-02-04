@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Feedback</ion-title>
+   
+     <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+     </ion-buttons>
+  </ion-toolbar>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</ion-header>
+
+<ion-content>
+  <div>
+    
+   <div>
+    <ion-list *ngIf="!isRating">
+      <ion-item *ngFor="let item of result">
+        <!-- <ion-avatar>
+          <img src="assets/images/placeholder-man.png">
+        </ion-avatar> -->
+        <ion-label >
+          <h3>{{item.name}}</h3>
+          <p>{{item.updated_at}}</p>
+          <p>{{item.description}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div *ngIf="isRating" class="rating_form">
+
+      <form class="container" [formGroup]="myform" (ngSubmit)="formSubmit()">
+
+        <div>
+          <label for="fname">Name</label><br>
+          <input type="text" id="fname" [ngModel]="username" disabled formControlName="name" placeholder="Name">
+         </div>
+
+       <div>
+        <label for="fname">Subject</label><br>
+        <input type="text" id="fname" class="subject" formControlName="subject" placeholder="">
+       </div>
+        
+        <ng-container *ngFor='let validation of validation_messages.subject'>
+          <div *ngIf="myform.get('subject').hasError(validation.type) && (myform.get('subject').dirty || myform.get('subject').touched)">
+            {{validation.message}}
+          </div>
+        </ng-container>
+        
+        <!-- <div>
+          <label for="fname">Rating</label><br>
+          <input type="text" id="fname" formControlName="rating" placeholder="0.00">
+        </div>
+        
+        <ng-container *ngFor='let validation of validation_messages.rating'>
+          <div *ngIf="myform.get('rating').hasError(validation.type) && (myform.get('rating').dirty || myform.get('rating').touched)">
+            {{validation.message}}
+          </div>
+        </ng-container> -->
+
+        <div>
+          <label for="lname">Description</label><br>
+          <textarea type="text" id="lname" formControlName="description" value="Doe"></textarea>
+        </div>
+        
+        <ng-container *ngFor='let validation of validation_messages.description'>
+          <div *ngIf="myform.get('description').hasError(validation.type) && (myform.get('description').dirty || myform.get('description').touched)">
+            {{validation.message}}
+          </div>
+        </ng-container>
+
+        <input type="submit" value="Submit" [disabled]="!myform.valid" class="btn_submit">
+      </form> 
+    </div>
+  </div>
+  
+  <ion-spinner *ngIf="showSpinner" class="spinner" color="primary"></ion-spinner>
+  
+  <ion-fab class="fab_button"  vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="writeFeedback($event)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  </div>
+  
+</ion-content>

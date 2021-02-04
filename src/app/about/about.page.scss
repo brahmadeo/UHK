@@ -48,6 +48,11 @@ ion-title {
   height: 100%;
   text-align: center;
 }
+.spinner{
+    left: 45%;
+    top: 50%;
+    position: absolute;
+}
 .ion-color-primary {
     --ion-color-base: #2B5F87 !important;
     --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;

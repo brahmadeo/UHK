@@ -20,13 +20,12 @@
     
         <div class="listing" style="background-image: url(assets/images/ser.png);width: 100%;background-size: cover; height:100%;">
         
-            <ul  *ngIf="result?.length > 0 ">
-              <li *ngFor="let item of result"> <a href="">
-                <img src="assets/images/kipper1.png"><br><p>{{item?.text}}</p><h4></h4></a>
+            <ul *ngIf="result?.length > 0 ">
+              <li *ngFor="let item of result" [routerLink]="['/', 'service', item.id]"> <a href="">
+                <img src="assets/images/kipper1.png" ><br><p class="title">{{item?.name}}</p><h4></h4></a>
               </li>
             </ul>
             <div *ngIf="result?.length == 0 && !showSpinner" class="error_msg">Data not found</div>
-            
         </div>
         <ion-spinner class="progressbar" *ngIf="showSpinner" color="primary"></ion-spinner> 
 

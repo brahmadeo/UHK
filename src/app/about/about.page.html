@@ -1,13 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>About</ion-title>
-    <ion-button class="btn_next" color="primary" slot="end" ion-button (click)="go()">
-       next
-     </ion-button>
 
-     <ion-buttons>
-       <ion-back-button defaultHref="/home1"></ion-back-button>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
      </ion-buttons>
+     
   </ion-toolbar>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,16 +20,16 @@
    </div>
 </section>
 
+<ion-spinner *ngIf="showSpinner" class="spinner" color="primary"></ion-spinner>
 
 <section class="our_about">
 	<div class="container">
-		<h2>about</h2>
-
+	
 		<div class="row">
 			<div class="col-md-8 col-12">
 				<div class="about_text">
-				 <h3>Profile</h3>
-				 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>	
+				 <h3>{{result.name}}</h3>
+				 <p id="aboutDescription"></p>	
 				</div>
 			</div>
 			<div class="col-md-4 col-12">

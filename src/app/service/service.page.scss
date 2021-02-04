@@ -73,12 +73,15 @@ ion-title {
     width: auto;
     left: 50%;
     top: 50%;
+    color: red;
     text-align: center;
-    
     background-color: #fff;
 }
 .progressbar{
     left: 50%;
     top: 50%;
     position: absolute;
+  }
+  .title{
+      color: #fff;
   }

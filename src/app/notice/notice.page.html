@@ -1,11 +1,9 @@
 <ion-header>
 	<ion-toolbar color="primary">
 	   <ion-title>Notice</ion-title>
-	   <ion-button color="primary" slot="end" ion-button (click)="go()">
-		  next
-	   </ion-button>
-	   <ion-buttons>
-		  <ion-back-button defaultHref="/clientele"></ion-back-button>
+	
+	   <ion-buttons slot="start">
+		<ion-menu-button autoHide="false"></ion-menu-button>
 	   </ion-buttons>
 	</ion-toolbar>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,10 +16,11 @@
 	<section  class="notice1" style="background-image: url(assets/images/hand_shake.jpg);width: 100%;background-size: cover;height: 25%;"></section>
 	<section class="our_Notice">
 	   <div class="container">
-		  <h2>Notice</h2>
-		  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+		  <h2>{{result.name}}</h2>
+		  <p id="noticeDescription"></p>
 		  <div class="form000">
 			 <form [formGroup]="myform" (ngSubmit)="formSubmit()">
+				<ion-spinner *ngIf="showSpinner" class="spinner" color="primary"></ion-spinner>
 				<label for="fname">Your Name(required)</label>
 				<input type="text" id="fname" formControlName="name" placeholder="">
 				<ng-container *ngFor='let validation of validation_messages.name'>
@@ -64,15 +63,16 @@
 					</div>
 					
 				</ng-container>
-				<label for="upload-photo">Upload Your CV(required)</label>
-				<input type="file" formControlName="photo" id="upload-photo" />
+				<label for="upload-photo" id="filename">Upload Your CV(required)</label>
+				<input type="submit" value="Choose file" (click)="selectFile()">
+				<!-- <input type="file" formControlName="photo" id="myFile"/>
 				<ng-container *ngFor='let validation of validation_messages.photo'>
 					<div *ngIf="myform.get('photo').hasError(validation.type) && (myform.get('photo').dirty || myform.get('photo').touched)">
 						{{validation.message}}
 					</div>
 
-				</ng-container>
-				<input type="submit" block [disabled]="!myform.valid" value="Submit">
+				</ng-container> -->
+				<input type="submit" block [disabled]="!myform.valid" value="Submit" (click)="sendPostRequest()">
 			 </form>
 		  </div>
 	   </div>

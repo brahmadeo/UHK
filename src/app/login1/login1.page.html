@@ -40,6 +40,7 @@
                     {{ validation.message }}
                  </div>
               </ng-container> -->
+
               <div class="input-container">
                  <i class="fa fa-key icon"></i>
                  <input class="input-field" [(ngModel)] = "inputPassword" type="password" placeholder="Password" formControlName="password">                 
@@ -50,6 +51,8 @@
                  </div>
               </ng-container>
               <input type="button" block [disabled] = "!myform.valid" value="SALES PERSON LOGIN" (click)="sendPostRequest()" class="go_btn">
+
+              <div class="forgot_pass" (click)="forgotPassword()">Forgot Password?</div>
            </form>
         </div>
      </div>

@@ -121,7 +121,7 @@ ion-title.ios.title-ios.hydrated {
 }
 .all_btn ul {  
     list-style: none;
-    padding-left: 0;
+    // padding-left: 0;
     display: flex;
     margin-right: -7px;
     margin-left: -7px;
@@ -196,6 +196,13 @@ footer {
   border: 4px solid;
   color: grey;
 }
+.hide{
+  display: none;
+}
+ion-textarea#subject {
+  background-color: aliceblue;
+}
+
 
 
 

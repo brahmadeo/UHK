@@ -43,21 +43,38 @@
    <section class="home1_txt">
       <div class="container">
          <h4>Why us</h4>
-         <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+         <p id="homeDescription"></p>
          <div class="bttn01"><a href="#">READ MORE</a></div>
       </div>
    </section>
    <section class="home1_bx">
+      <ion-spinner *ngIf="showSpinner" class="spinner" color="primary"></ion-spinner>
       <div class="container">
          <h3>what we work</h3>
          <div class="row">
-            <div class="col-md-6 col-6 aa0">
-               <div class="box1 a1">
+            <!-- <div class="listing"> 
+               <ul *ngIf="result?.length>0">
+                  <li *ngFor="let item of result">
+                     <div class="col-md-6 col-6 aa0">
+                        <div class="box1 a1">
+                           <img src="assets/images/security guard.png">
+                           <h6>{{item?.name}}</h6>
+                           <p>{{item?.description}}</p>
+                        </div>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+            <div *ngIf="result?.length == 0" class="error_message">Data not found</div>
+            <ion-spinner class="progressbar" *ngIf="showSpinner" color="primary"></ion-spinner>  -->
+            <div class="col-md-6 col-6 aa1">
+               <div class="box1 a2">
                   <img src="assets/images/security guard.png">
                   <h6>Security Guard</h6>
                   <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                </div>
             </div>
+            
             <div class="col-md-6 col-6 aa1">
                <div class="box1 a2">
                   <img src="assets/images/security guard.png">

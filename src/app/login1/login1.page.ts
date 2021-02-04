@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, Events } from '@ionic/angular';
 import  { ApiService} from '../services/api.service';
 
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -44,10 +44,11 @@ validation_messages = {
 
 }
 
- ngOnInit() {
-  }
 
-  constructor(private router: Router, private alertCtrl: AlertController, private toastController: ToastController, formBuilder: FormBuilder, private apiService: ApiService){
+
+
+  constructor(private router: Router, private alertCtrl: AlertController, private toastController: ToastController, formBuilder: FormBuilder, 
+	private apiService: ApiService, private events: Events){
 
   	
   		this.myform = formBuilder.group({
@@ -58,6 +59,11 @@ validation_messages = {
  	})
 
    }
+   ngOnInit() {
+}
+   ionViewDidLoad(){ 
+    
+}
 
   go(){
 
@@ -84,6 +90,7 @@ validation_messages = {
     subHeader: 'Dialog',
     buttons: ['Dismiss']
    });
+
    await alert.present(); 
    
   }
@@ -99,10 +106,13 @@ validation_messages = {
 
   /* Api Call */
   sendPostRequest() {
-	  this.showLoader = true;
-	 let postData = {
+	  if(this.apiService.getNetworkStatus){
+		console.log("fcm token when api call "+ localStorage.getItem("fcm_token"));
+		this.showLoader = true;
+	 	let postData = {
 			 "email": this.inputUsername,
-			 "password": this.inputPassword
+			 "password": this.inputPassword,
+			 "fcm_token": localStorage.getItem("fcm_token")
 	 }
 
 	 console.log(this.inputUsername+" , ", this.inputPassword)
@@ -110,18 +120,37 @@ validation_messages = {
 	 this.apiService.ApiCall('POST',this.url, postData).subscribe(data => {
 		let response = JSON.parse(JSON.stringify(data));
 		if(response.Ack === 1){
+
+			this.events.publish('userData', "login");
+			
 			this.showLoader = false;
 			window.localStorage.setItem('user_id', JSON.parse(JSON.stringify(response.data)).id)
+			window.localStorage.setItem('user_name', JSON.parse(JSON.stringify(response.data)).name)
 			//this.storage.set('userId', response.data)
+			console.log("user: "+response.data.name);
+
+			let navigationExtra : NavigationExtras = {
+				state : {
+					special: response.data.name
+				}
+			}
 			
-			this.router.navigate(['/name']);
+			this.router.navigate(['/name'], navigationExtra);
 		}else if(response.Ack === 0){
 			this.showLoader = false;
-			this.presentAlert('Something went wrong!')
+			this.presentToast('Something went wrong!')
 		}
 	 }, error => {
 		 this.showLoader = false;
-		 this.presentAlert(error);
+		 this.presentToast(error);
 	 });
+
+	  }else{
+		  this.presentToast("Please check your internet connection!")
+	  }
+   }
+
+   forgotPassword(){
+	  this.router.navigate(['/forgotpassword']);
    }
 }

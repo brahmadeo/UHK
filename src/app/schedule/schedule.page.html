@@ -5,9 +5,11 @@
      <ion-buttons slot="start">
         <ion-menu-button autoHide="false"></ion-menu-button>
      </ion-buttons>
+     <!-- <ion-button slot="end"><i class="fa fa-plus"></i></ion-button> -->
      
   </ion-toolbar>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -20,8 +22,8 @@
      <div class="form002">	
      <form action="/action_page.php">
 
-     	<div class="form-check-inline">
-
+     	<div class="main_d">
+         <!-- <div class="form-check-inline">
           <label class="customradio"><span class="radiotextsty">PREVIOUS</span>
             <input type="radio" [(ngModel)]="radio" checked="checked" value="previous" name="radio" (change)="prevCheck($event)">
             <span class="checkmark"></span>
@@ -34,56 +36,170 @@
           <label class="customradio"><span class="radiotextsty">UPCOMING</span>
             <input type="radio" [(ngModel)]="radio" checked="checked" name="radio" value="upcoming" (change)="tomorrowCheck($event)">
             <span class="checkmark"></span>
-          </label>      
-          
-          <ion-spinner class="progressbar" *ngIf="showSpinner" color="primary"></ion-spinner> 
+          </label>  
+         </div> -->
+         <div>
+           <table>
+             <tr>
+               <td>
+                <ion-card (click)="prevCheck($event)" class="previous_card">
+                  <p class="day_text">Previous</p>
+                </ion-card>
+               </td>
+               
+               <td>
+                <ion-card (click)="todayCheck($event)" class="today_card">
+                  <p class="day_text">Today</p>
+                </ion-card>
+               </td>
 
+               <td>
+                <ion-card (click)="tomorrowCheck($event)" class="upcoming_card">
+                  <p class="day_text">Upcoming</p>
+                </ion-card>
+               </td>
+             </tr>
+           </table>
+           
+         </div>
+         
       </div>
-
+      <div  class="selectDate">
+        <input type="text" [(ngModel)]="selectedDate" class="calender_input" name="selectDate" placeholder="dd/MM/yyyy" (click)="ChooseDate($event)">
+        <ion-button class="search_button" (click)="ApiCallForSearchSchedule($event)"><i class="fa fa-search icon" padding right:10px></i></ion-button>
+        
+        <!-- <ion-button (click)="ChooseDate($event)">select date</ion-button> -->
+      </div>
+      <ion-spinner class="progressbar" *ngIf="showSpinner" color="primary"></ion-spinner> 
      <br>
     <br>
 
-    <div *ngIf="result?.length == 0 && !showSpinner" class="error_msg">No Data found</div>
+     <!-- form for creating schedule start -->
+    <div *ngIf="isCreatingSchedule" class="shw">
+        <form [formGroup]="myform" (ngSubmit)="formSubmit()">
+          
+          <label for="fname">Organisation Name</label>
+            <input type="text" id="fname" formControlName="name" placeholder="">
+            <ng-container *ngFor='let validation of validation_messages.name'>
+              <div *ngIf="myform.get('name').hasError(validation.type) && (myform.get('name').dirty || myform.get('name').touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
 
-    <ion-list *ngFor="let item of result" (click)="goUpdateSchedule(item.id)">
+            <label for="fname">Contact Person Name</label>
+            <input type="text" id="fname" formControlName="contact_person" placeholder="">
+            <ng-container *ngFor='let validation of validation_messages.contact_person'>
+              <div *ngIf="myform.get('contact_person').hasError(validation.type) && (myform.get('contact_person').dirty || myform.get('contact_person').touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
 
-      <ion-card class="ion-card  jjjjj">
+            <label for="lname">Your Mobile</label>
+            <input type="number" id="num" formControlName="mobile" placeholder="">
+            <ng-container *ngFor='let validation of validation_messages.mobile'>
+              <div *ngIf="myform.get('mobile').hasError(validation.type) && (myform.get('mobile').dirty || myform.get('mobile').touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
 
-          <table class="table-rw">
-            <tr>
-              <td>Date :</td>
-              <td>{{item.date}}</td>
-            </tr>
-            <tr>
-              <td>Client Name :</td>
-              <td>{{item.name}}</td>
-            </tr>
-            <tr>
-              <td>Address :</td>
-              <td>{{item.address}}</td>
-            </tr>
-            <tr>
-              <td>Phone :</td>
-              <td>{{item.mobile}}</td>
-            </tr>
-            <tr>
-              <td>Comment :</td>
-              <td>{{item.comment}}</td>
-            </tr>
-            <tr>
-              <td>Status :</td>
-              <td>{{item.status}}</td>
-            </tr>
-              
-          </table>
+            <label for="lname">Your Address</label>
+            <input type="text" id="Add" name="address" formControlName="address" placeholder="">
+            <ng-container *ngFor='let validation of validation_messages.address'>
+              <div *ngIf="myform.get('address').hasError(validation.type) && (myform.get('address').dirty || myform.get('address').touched)">
+                {{validation.message}}
+              </div>
 
-      </ion-card>
+            </ng-container>
+          
+            <label for="lname">Date</label>
+            <input type="text" id="date_id" formControlName="create_date" placeholder="">
+            <ng-container *ngFor='let validation of validation_messages.create_date'>
+              <div *ngIf="myform.get('create_date').hasError(validation.type) && (myform.get('create_date').dirty || myform.get('create_date').touched)">
+                {{validation.message}}
+              </div>
 
-    </ion-list>
+            </ng-container>
+            <label for="lname">Time</label>
+            <input type="text" id="qua" formControlName="create_time" placeholder="">
+            <ng-container *ngFor='let validation of validation_messages.create_time'>
+              <div *ngIf="myform.get('create_time').hasError(validation.type) && (myform.get('create_time').dirty || myform.get('create_time').touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
+           
+            <textarea type="text-area" id="qua" class="subject" formControlName="description" placeholder="Write a comment"></textarea>
+            <ng-container *ngFor='let validation of validation_messages.description'>
+              <div *ngIf="myform.get('description').hasError(validation.type) && (myform.get('description').dirty || myform.get('description').touched)">
+                {{validation.message}}
+              </div>
+            </ng-container>
+            <!-- <ion-textarea class="subject" formControlName="subject" #firstnumber id="subject" name="subject"   placeholder="Write a Comment " style="height:100px"></ion-textarea>  -->
 
- 
+            <input type="submit" block [disabled]="!myform.valid" value="Submit">
+            
+        </form>
+      </div>
+     <!-- form for creating schedule end -->
+
+     <!-- Listing for schedule start -->
+    <div *ngIf="!isCreatingSchedule">
+      <ion-list *ngFor="let item of result" (click)="goUpdateSchedule(item)">
+
+        <ion-card class="ion-card  jjjjj" [ngStyle]="(item.status==='Read') &&{'background':'orange'} || (item.status==='Unread') &&{'background':'red'} || (item.status==='Completed') &&{'background':'green'}">
+  
+            <table class="table-rw">
+              <tr>
+                <td>Date :</td>
+                <td>{{item.date | date : 'dd-MM-yyyy'}}</td>
+              </tr>
+              <tr>
+                <td>Organisation Name :</td>
+                <td>{{item.contact_person_name}}</td>
+              </tr>
+              <tr>
+                <td>Address :</td>
+                <td>{{item.address}}</td>
+              </tr>
+              <tr>
+                <td>Phone :</td>
+                <td>{{item.mobile}}</td>
+              </tr>
+              <tr>
+                <td>Comment :</td>
+                <td>{{item.description}}</td>
+              </tr>
+              <tr>
+                <td>Status :</td>
+                <td>{{item.status}}</td>
+              </tr>
+                
+            </table>
+  
+        </ion-card>
+  
+      </ion-list>
+      <div *ngIf="result?.length == 0 && !showSpinner" class="error_msg">No Data found</div>
+    </div>
+
+    <!-- Listing for schedule end -->
+    
   </form>
     </div>
-	</div>
+  </div>
+  
 </section>
+<script>
+  function func() {
+        var name = document.getElementById('factionName'),
+        factionName = input.value;
+
+        document.getElementById('test1').innerHTML = name;
+    }
+</script>
+
+<ion-fab class="fab_button" vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="createIconClicked()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
 </ion-content>

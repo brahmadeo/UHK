@@ -133,3 +133,29 @@ ion-title {
     color: white;
 }
 
+.listing ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left:17px;
+}
+.progressbar{
+    left: 50%;
+    top: 50%;
+    position: absolute;
+  }
+  .error_message{
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    color: red;
+    text-align: center;
+    background-color: #fff;
+}
+.spinner{
+    left: 45%;
+    top: 50%;
+    position: absolute;
+}
+
+
+

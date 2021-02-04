@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SlideshowPage } from './slideshow.page';
+import { Network } from '@ionic-native/network/ngx';
+
 
 const routes: Routes = [
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  providers:[Network],
   declarations: [SlideshowPage]
 })
 export class SlideshowPageModule {}

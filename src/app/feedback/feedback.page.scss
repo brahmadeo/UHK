@@ -1,0 +1,54 @@
+.ion-color-primary {
+    --ion-color-base: #2B5F87 !important;
+    --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
+    --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
+    --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
+  }
+  ion-label.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
+    margin-left: 15px;
+}
+
+.rating_form{
+  text-align: center;
+  margin-top: 50%
+}
+.fab_button{
+  color: #2b5f87ba;
+}
+label{
+  margin-top: 5px;
+}
+button, input {
+  overflow: visible;
+  border: -4px;
+  text-align: center;
+  border-radius: 20px;
+  color: black;
+  border-color: #2b5f87ba;
+  padding: 5px;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+  margin-top: 5px;
+  color: black;
+  border: -3px;
+  border-color: #2b5f87ba;
+}
+input[type="submit"] {
+  padding-left: 14px;
+  padding-right: 15px;
+  margin-top: 10px;
+  outline: none;
+}
+input.subject{
+  outline: none;
+}
+.spinner{
+  position: absolute;
+  left: 45%;
+  top: 50%;
+}
